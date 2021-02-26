@@ -25,9 +25,9 @@ This repository contains all scripts and preliminary statistics related to the k
 `python all2all_public_quantification.py clone_file_path.tab`
 This python script implements the all-to-all public clone quantification among enrolled samples. It takes an annotation tabular file `clone_file_path.tab` as input. This file has three columns including sample id, project id and path to `clones.txt` that output by MiXCR and looks like below,
 	```
-	sample	project	cloneflPath
+	Sample	Project	Path
 	DRR056252	PRJDB4353	DRR056252_MIXCR/clones.txt
-	DRR056253	PRJDB4353	/DRR056253_MIXCR/clones.txt
+	DRR056253	PRJDB4353	DRR056253_MIXCR/clones.txt
 	DRR056254	PRJDB4353	DRR056254_MIXCR/clones.txt
 	ERR1760498	PRJEB15295	ERR1760498_MIXCR/clones.txt
 	ERR1812282	PRJEB18926	ERR1812282_MIXCR/clones.txt
