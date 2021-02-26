@@ -22,6 +22,20 @@ This repository contains all scripts and preliminary statistics related to the k
 	- The file containing all lines in the clones.txt file that records public clones (Fig 5C)
 ### Scripts
 * All-to-all public clone quantification (Fig. 5A)
+`python all2all_public_quantification.py clone_file_path.tab`
+This python script implements the all-to-all public clone quantification among enrolled samples. It takes an annotation tabular file `clone_file_path.tab` as input. This file has three columns including sample id, project id and path to `clones.txt` that output by MiXCR and looks like below,
+```
+sample	project	cloneflPath
+DRR056252	PRJDB4353	DRR056252_MIXCR/clones.txt
+DRR056253	PRJDB4353	/DRR056253_MIXCR/clones.txt
+DRR056254	PRJDB4353	DRR056254_MIXCR/clones.txt
+ERR1760498	PRJEB15295	ERR1760498_MIXCR/clones.txt
+ERR1812282	PRJEB18926	ERR1812282_MIXCR/clones.txt
+ERR1812283	PRJEB18926	ERR1812283_MIXCR/clones.txt
+```
 * All-to-all public clone visualization (Fig. 5A)
 * Linear model visualization (Fig. 5B)
 * Quantification and visualization of the correlation between clonality and publicness of public clones (Fig. 5C)
+
+## Dependencies
+In-house scripts above were written in Python (v3.7) and MATLAB (v). For python, a series of modules are required, they include pandas, csv. For MATLAB, xxx is required. 
