@@ -60,6 +60,18 @@ The script, `linear_model_visualization.py`, implements the visualization of the
 
 ![linear_model](figures/linear_model_scatter_plot_for_samples_more_than_10000_clones.png)
 
+This tabular file, `linear_model_params.txt`, consists of four columns, including `CloneNumFilter` (), `Coef` (Coefficient of the linear model), `Intercept` (Intercept of the linear model) and `R2` (goodness of fit), which looks like
+```
+CloneNumFilter  Coef    Intercept       R2
+10000   8.235715861523267e-11   3.018497992946571       0.8657346352020397
+100000  8.06189835673996e-11    21.389248342230502      0.87066669432678
+1000000 6.195753424951246e-11   382.57448702253726      0.8547479623611061
+2000000 5.83398705048679e-11    494.30328497267794      0.8604386804475349
+3000000 5.086226482846224e-11   907.385414449705        0.9609951642782198
+4000000 4.9542897429104056e-11  1076.0557291797643      0.982150157073821
+5000000 6.876732151569549e-11   -824.2036315063278      0.9974067292062271
+```
+
 
 #### Quantification and visualization of the correlation between clonality and publicness of public clones (Fig. 5C)
 
@@ -67,7 +79,7 @@ The script, `linear_model_visualization.py`, implements the visualization of the
 
 The script, `clonality_publicness_correlation_visualization.py`, implements the visualization of correlation between clonality and publicness. It takes two parameters, the first is the file containing all lines in the clones.txt file that records public clones (i. e. `PUB_public_clone_record_from_mixcr_output.tab.gz`) and the second is a tabular metadata for each enrolled sample (i. e. `metadata.tab`). The output figure looks like
 
-![correlation](figures/Clonality_against_publicness_and_CDR3_length.png.png)
+![correlation](figures/Clonality_against_publicness_and_CDR3_length.png)
 
 ## Dependencies
 In-house scripts above were written in Python (v3.7) and MATLAB (v). For python, a series of modules are required, which include pandas, csv. For MATLAB, xxx and xxx are required. 
