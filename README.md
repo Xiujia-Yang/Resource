@@ -60,7 +60,7 @@ The script, `linear_model_visualization.py`, implements the visualization of the
 
 ![linear_model](figures/linear_model_scatter_plot_for_samples_more_than_10000_clones.png)
 
-This tabular file, `linear_model_params.txt`, consists of four columns, including `CloneNumFilter` (), `Coef` (Coefficient of the linear model), `Intercept` (Intercept of the linear model) and `R2` (goodness of fit), which looks like
+This tabular file, `linear_model_params.txt`, consists of four columns, including `CloneNumFilter` (clone number filter criteria), `Coef` (Coefficient of the linear model), `Intercept` (Intercept of the linear model) and `R2` (goodness of fit), which looks like
 ```
 CloneNumFilter  Coef    Intercept       R2
 10000   8.235715861523267e-11   3.018497992946571       0.8657346352020397
