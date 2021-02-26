@@ -56,7 +56,7 @@ The script, `all2all_public_visualization.py`, implements the visualization of a
 
 `python linear_model_visualization.py pairwise_rep_comp.tab`
 
-The script, `linear_model_visualization.py`, implements the visualization of the linear model we observed between repertoires. It takes only the pairwise repertoire comparison tabular file (with the number of total clones for compared samples included, i. e. PUB_pairwise_repertoire_comparison.tab.gz) and gives two kinds of output with one being figures demonstrating the linear models and the other being a tabular file recording the parameters of linear models. The output figures show linear models together with individual points and each of them looks like
+The script, `linear_model_visualization.py`, implements the visualization of the linear model we observed between repertoires. It takes only the pairwise repertoire comparison tabular file (with the number of total clones for compared samples included, i. e. `PUB_pairwise_repertoire_comparison.tab.gz`) and gives two kinds of output with one being figures demonstrating the linear models and the other being a tabular file recording the parameters of linear models. The output figures show linear models together with individual points and each of them looks like
 
 ![linear_model](figures/linear_model_scatter_plot_for_samples_more_than_10000_clones.png)
 
@@ -65,7 +65,7 @@ The script, `linear_model_visualization.py`, implements the visualization of the
 
 `python clonality_publicness_correlation_visualization.py pub_record.tab metadata.tab`
 
-The script, `clonality_publicness_correlation_visualization.py`, implements the visualization of correlation between clonality and publicness. It takes two parameters, the first is the file containing all lines in the clones.txt file that records public clones (i. e. PUB_public_clone_record_from_mixcr_output.tab.gz) and the second is a tabular metadata for each enrolled sample (i. e. `metadata.tab`). The output figure looks like
+The script, `clonality_publicness_correlation_visualization.py`, implements the visualization of correlation between clonality and publicness. It takes two parameters, the first is the file containing all lines in the clones.txt file that records public clones (i. e. `PUB_public_clone_record_from_mixcr_output.tab.gz`) and the second is a tabular metadata for each enrolled sample (i. e. `metadata.tab`). The output figure looks like
 
 ![correlation](figures/Clonality_against_publicness_and_CDR3_length.png.png)
 
