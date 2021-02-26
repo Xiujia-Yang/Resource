@@ -67,7 +67,7 @@ The script, `linear_model_visualization.py`, implements the visualization of the
 
 The script, `clonality_publicness_correlation_visualization.py`, implements the visualization of correlation between clonality and publicness. It takes two parameters, the first is the file containing all lines in the clones.txt file that records public clones (i. e. PUB_public_clone_record_from_mixcr_output.tab.gz) and the second is a tabular metadata for each enrolled sample (i. e. `metadata.tab`). The output figure looks like
 
-![correlation](figures/linear_model_scatter_plot_for_samples_more_than_10000_clones.png)
+![correlation](figures/Clonality_against_publicness_and_CDR3_length.png.png)
 
 ## Dependencies
 In-house scripts above were written in Python (v3.7) and MATLAB (v). For python, a series of modules are required, which include pandas, csv. For MATLAB, xxx and xxx are required. 
