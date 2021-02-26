@@ -22,10 +22,9 @@ This repository contains all scripts and preliminary statistics related to the k
 	- The file containing all lines in the clones.txt file that records public clones (Fig 5C)
 ### Scripts
 #### All-to-all public clone quantification (Fig. 5A)
-
 `python all2all_public_quantification.py clone_file_path.tab`
 
-The script, `all2all_public_quantification.py`, implements an all-to-all public clone quantification among enrolled samples. It takes only an annotation tabular file, `clone_file_path.tab`, as input. This file has three columns including sample id, project id and path to `clones.txt` that output by MiXCR and looks like below,
+The script, `all2all_public_quantification.py`, implements an all-to-all public clone quantification among enrolled samples. It takes only an annotation tabular file, `clone_file_path.tab`, as input. This file has three columns including sample id, project id and path to `clones.txt` that output by MiXCR and it looks like below,
 ```
 Sample	Project	Path
 DRR056252	PRJDB4353	DRR056252_MIXCR/clones.txt
@@ -46,6 +45,11 @@ IGHV3-30-3_IGHJ4_TGTGCGAGAGGAGATTCCCGATACAGCTATGGCCTAGACCTTGACTACTGG	SRR8365263,
 The two matrixes are different from each other in that one of them neglects clone sharing between samples from the same project while the other does not (see _Method_ in MS above). 
 
 #### All-to-all public clone visualization (Fig. 5A)
+
+`python all2all_public_visualization.py matrix.tab metadata.tab`
+
+The script, `all2all_public_visualization.py`, implements the visualization of all-to-all public clone quantification result. It takes two parameters, the first is the all-to-all repertoire comparison matrix (i. e. `PUB_all_to_all_repertoire_comparison_matrix.csv.gz`) and the second is a tabular metadata for each enrolled sample (i. e. `[metadata.tab](data/metadata.tab)`). The output figure looks like
+
 #### Linear model visualization (Fig. 5B)
 #### Quantification and visualization of the correlation between clonality and publicness of public clones (Fig. 5C)
 
