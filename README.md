@@ -23,19 +23,18 @@ This repository contains all scripts and preliminary statistics related to the k
 ### Scripts
 * All-to-all public clone quantification (Fig. 5A)
 
-	`python all2all_public_quantification.py clone_file_path.tab`
+`python all2all_public_quantification.py clone_file_path.tab`
 
 The script, `all2all_public_quantification.py`, implements an all-to-all public clone quantification among enrolled samples. It takes only an annotation tabular file, `clone_file_path.tab`, as input. This file has three columns including sample id, project id and path to `clones.txt` that output by MiXCR and looks like below,
-
-	```
-	Sample	Project	Path
-	DRR056252	PRJDB4353	DRR056252_MIXCR/clones.txt
-	DRR056253	PRJDB4353	DRR056253_MIXCR/clones.txt
-	DRR056254	PRJDB4353	DRR056254_MIXCR/clones.txt
-	ERR1760498	PRJEB15295	ERR1760498_MIXCR/clones.txt
-	ERR1812282	PRJEB18926	ERR1812282_MIXCR/clones.txt
-	ERR1812283	PRJEB18926	ERR1812283_MIXCR/clones.txt
-	```
+```
+Sample	Project	Path
+DRR056252	PRJDB4353	DRR056252_MIXCR/clones.txt
+DRR056253	PRJDB4353	DRR056253_MIXCR/clones.txt
+DRR056254	PRJDB4353	DRR056254_MIXCR/clones.txt
+ERR1760498	PRJEB15295	ERR1760498_MIXCR/clones.txt
+ERR1812282	PRJEB18926	ERR1812282_MIXCR/clones.txt
+ERR1812283	PRJEB18926	ERR1812283_MIXCR/clones.txt
+```
 It outputs three statistic files, including two all-to-all repertoire comparison matrixes (i. e. `PUB_all_to_all_repertoire_comparison_matrix.csv.gz`) and a tabular file with three columns (clone, shared samples, number of shared samples) which is as below,
 ```
 Clone	Samples	No.of.Samples
@@ -44,6 +43,7 @@ IGHV3-64D_IGHJ4_TGTGTGAAAGCTCCTGGTGGCTGGTCCAACCCCTTTGACTACTGG	SRR8365263,SRR8365
 IGHV1-69_IGHJ4_TGTGCGAGAGATCGGGAGAACTGGAACTACGTATTTGACTACTGG	SRR8365263,SRR8365261,SRR8365473,SRR8365471	4
 IGHV3-30-3_IGHJ4_TGTGCGAGAGGAGATTCCCGATACAGCTATGGCCTAGACCTTGACTACTGG	SRR8365263,SRR8365261	2
 ```
+The two matrixes are different from each other in that one of them neglects clone sharing between samples from the same project while the other does not (see _Method_ in MS above). 
 
 * All-to-all public clone visualization (Fig. 5A)
 * Linear model visualization (Fig. 5B)
