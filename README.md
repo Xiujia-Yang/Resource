@@ -48,7 +48,7 @@ The two matrixes are different from each other in that one of them neglects clon
 
 `python all2all_public_visualization.py matrix.tab metadata.tab`
 
-The script, `all2all_public_visualization.py`, implements the visualization of all-to-all public clone quantification result. It takes two parameters, the first is the all-to-all repertoire comparison matrix (i. e. `PUB_all_to_all_repertoire_comparison_matrix.csv.gz`) and the second is a tabular metadata for each enrolled sample (i. e. `[metadata.tab](data/metadata.tab)`). The output figure looks like
+The script, `all2all_public_visualization.py`, implements the visualization of all-to-all public clone quantification result. It takes two parameters, the first is the all-to-all repertoire comparison matrix (i. e. `PUB_all_to_all_repertoire_comparison_matrix.csv.gz`) and the second is a tabular metadata for each enrolled sample (i. e. `metadata.tab`). The samples are ordered according to the number of total clones they contain. The output figure looks like
 
 #### Linear model visualization (Fig. 5B)
 #### Quantification and visualization of the correlation between clonality and publicness of public clones (Fig. 5C)
