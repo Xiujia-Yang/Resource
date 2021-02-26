@@ -23,9 +23,10 @@ This repository contains all scripts and preliminary statistics related to the k
 ### Scripts
 * All-to-all public clone quantification (Fig. 5A)
 
-`python all2all_public_quantification.py clone_file_path.tab`
+	`python all2all_public_quantification.py clone_file_path.tab`
 
-This python script implements the all-to-all public clone quantification among enrolled samples. It takes an annotation tabular file `clone_file_path.tab` as input. This file has three columns including sample id, project id and path to `clones.txt` that output by MiXCR and looks like below,
+The script, `all2all_public_quantification.py`, implements an all-to-all public clone quantification among enrolled samples. It takes only an annotation tabular file, `clone_file_path.tab`, as input. This file has three columns including sample id, project id and path to `clones.txt` that output by MiXCR and looks like below,
+
 	```
 	Sample	Project	Path
 	DRR056252	PRJDB4353	DRR056252_MIXCR/clones.txt
@@ -35,6 +36,15 @@ This python script implements the all-to-all public clone quantification among e
 	ERR1812282	PRJEB18926	ERR1812282_MIXCR/clones.txt
 	ERR1812283	PRJEB18926	ERR1812283_MIXCR/clones.txt
 	```
+It outputs three statistic files, including two all-to-all repertoire comparison matrixes (i. e. `PUB_all_to_all_repertoire_comparison_matrix.csv.gz`) and a tabular file with three columns (clone, shared samples, number of shared samples) which is as below,
+```
+Clone	Samples	No.of.Samples
+IGHV3-7_IGHJ4_TGTGTGAGAAGTCTAGGGATCCACTGG	SRR5063107,SRR5063100	2
+IGHV3-64D_IGHJ4_TGTGTGAAAGCTCCTGGTGGCTGGTCCAACCCCTTTGACTACTGG	SRR8365263,SRR8365473	2
+IGHV1-69_IGHJ4_TGTGCGAGAGATCGGGAGAACTGGAACTACGTATTTGACTACTGG	SRR8365263,SRR8365261,SRR8365473,SRR8365471	4
+IGHV3-30-3_IGHJ4_TGTGCGAGAGGAGATTCCCGATACAGCTATGGCCTAGACCTTGACTACTGG	SRR8365263,SRR8365261	2
+```
+
 * All-to-all public clone visualization (Fig. 5A)
 * Linear model visualization (Fig. 5B)
 * Quantification and visualization of the correlation between clonality and publicness of public clones (Fig. 5C)
