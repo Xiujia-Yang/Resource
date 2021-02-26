@@ -21,7 +21,7 @@ This repository contains all scripts and preliminary statistics related to the k
 * [PUB_public_clone_record_from_mixcr_output.tab.gz](data/PUB_public_clone_record_from_mixcr_output.tab.gz) 
 	- The file containing all lines in the clones.txt file that records public clones (Fig 5C)
 ### Scripts
-* All-to-all public clone quantification (Fig. 5A)
+#### All-to-all public clone quantification (Fig. 5A)
 
 `python all2all_public_quantification.py clone_file_path.tab`
 
@@ -45,9 +45,9 @@ IGHV3-30-3_IGHJ4_TGTGCGAGAGGAGATTCCCGATACAGCTATGGCCTAGACCTTGACTACTGG	SRR8365263,
 ```
 The two matrixes are different from each other in that one of them neglects clone sharing between samples from the same project while the other does not (see _Method_ in MS above). 
 
-* All-to-all public clone visualization (Fig. 5A)
-* Linear model visualization (Fig. 5B)
-* Quantification and visualization of the correlation between clonality and publicness of public clones (Fig. 5C)
+#### All-to-all public clone visualization (Fig. 5A)
+#### Linear model visualization (Fig. 5B)
+#### Quantification and visualization of the correlation between clonality and publicness of public clones (Fig. 5C)
 
 ## Dependencies
 In-house scripts above were written in Python (v3.7) and MATLAB (v). For python, a series of modules are required, which include pandas, csv. For MATLAB, xxx and xxx are required. 
