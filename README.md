@@ -15,11 +15,11 @@ This repository contains all scripts and preliminary statistics related to the k
 ## Public clone analyses
 ### Preliminary statistics
 * [PUB_all_to_all_repertoire_comparison_matrix.csv.gz](data/PUB_all_to_all_repertoire_comparison_matrix.csv.gz) 
-- The 2152*2152 matrix recording all-to-all repertoire comparisons (Fig. 5A in MS)
+	- The 2152*2152 matrix recording all-to-all repertoire comparisons (Fig. 5A in MS)
 * [PUB_pairwise_repertoire_comparison.tab.gz](data/PUB_pairwise_repertoire_comparison.tab.gz) 
-- The table recording pairwise repertoire comparison together with the number of total clones for compared samples (Fig. 5B) 
+	- The table recording pairwise repertoire comparison together with the number of total clones for compared samples (Fig. 5B) 
 * [PUB_public_clone_record_from_mixcr_output.tab.gz](data/PUB_public_clone_record_from_mixcr_output.tab.gz) 
-- The file containing all lines in the clones.txt file that records public clones (Fig 5C)
+	- The file containing all lines in the clones.txt file that records public clones (Fig 5C)
 ### Scripts
 * All-to-all public clone quantification (Fig. 5A)
 * All-to-all public clone visualization (Fig. 5A)
