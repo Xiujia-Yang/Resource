@@ -53,7 +53,19 @@ The script, `all2all_public_visualization.py`, implements the visualization of a
 ![heatmap](figures/all_to_all_comparison_heatmap.png)
 
 #### Linear model visualization (Fig. 5B)
+
+`python linear_model_visualization.py pairwise_rep_comp.tab`
+
+The script, `linear_model_visualization.py`, implements the visualization of the linear model we observed between repertoires. It takes only the pairwise repertoire comparison tabular file (with the number of total clones for compared samples included, i. e. PUB_pairwise_repertoire_comparison.tab.gz) and gives two kinds of output with one being figures demonstrating the linear models and the other being a tabular file recording the parameters of linear models. The output figures show linear models together with individual points and each of them looks like
+
+![linear_model](figures/linear_model_scatter_plot_for_samples_more_than_10000_clones.png)
+
+
 #### Quantification and visualization of the correlation between clonality and publicness of public clones (Fig. 5C)
+
 
 ## Dependencies
 In-house scripts above were written in Python (v3.7) and MATLAB (v). For python, a series of modules are required, which include pandas, csv. For MATLAB, xxx and xxx are required. 
+
+## Others
+For the scripts implementing other analyses in the MS, please contact the Lead Contact, Zhenhai Zhang (zhenhaismu@163.com).
