@@ -8,7 +8,7 @@ This repository contains all scripts and preliminary statistics related to the k
 
 `python geneUsageOverview_quantification.py V_input.txt V outDir`
 
-The script, `geneUsageOverview_quantification.py`, implements the overview of V/D/J gene usage. It takes four parameters including tabular usage matrix file, gene type, metadata file and output folder. Each column for usage matrix file indicates the sample and each row stands for the gene segment. The metadata file has two columns including SRR id and the number of productive reads. The usage matrix file looks like below,
+The script, `geneUsageOverview_quantification.py`, implements the overview of V/D/J gene usage. It takes three parameters including tabular usage matrix file, gene type, and output folder. Each column for usage matrix file indicates the sample and each row stands for the gene segment. The usage matrix file looks like below,
 ```
 	SRR8365312	ERR2567197	ERR1812302
 IGHV3-23	11.36	7.65	12.65
@@ -18,16 +18,19 @@ IGHV3-33	3.57	4.34	3.98
 IGHV1-18	4.87	3.38	3.28
 ```
 It outputs four tabular files and columns for each file are shown below. 
-V_gene_sample_num.txt
+`V_gene_sample_num.txt`
 - col 1: the name of gene segment
 - col 2: the number of samples having this gene segment
-V_gene_reads_num.txt
+
+`V_gene_reads_num.txt`
 - col 1: the SRR id for sample
 - col 2: the number of productive for this sample
-V_gene_num_per_sample.txt
+
+`V_gene_num_per_sample.txt`
 - col 1: the SRR id for sample
 - col 2: the number of gene segment this sample having
-V_gene_usage.txt (Samples in this file were sorted by the number of productive reads and genes were sorted by the number of samples having it.)
+
+`V_gene_usage.txt` (Samples in this file were sorted by the number of productive reads and genes were sorted by the number of samples having it.)
 - each column: the SRR id for sample
 - each row: the name of gene segment
 
