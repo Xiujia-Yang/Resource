@@ -18,6 +18,7 @@ IGHV3-33	3.57	4.34	3.98
 IGHV1-18	4.87	3.38	3.28
 ```
 It outputs four tabular files and columns for each file are shown below. 
+
 `V_gene_sample_num.txt`
 - col 1: the name of gene segment
 - col 2: the number of samples having this gene segment
