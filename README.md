@@ -3,6 +3,11 @@
 ## Overview
 This repository contains all scripts and preliminary statistics related to the key analyses in each section in Result of manuscript (MS) ***"Large-scale analysis of 2,152 Ig-seq datasets reveals key features of B cell biology and the antibody repertoire"***. These analyses can be classified into four categories, including gene usage, somatic recombination, somatic hypermutation and public clones. More details can be found in the following sections.
 
+- [Gene usage](#Gene usage)
+- [Somatic recombination](#Somatic recombination)
+- [Somatic hypermutation](#Somatic hypermutation)
+- [Public clone](#Public clones)
+
 ## Gene usage
 #### Gene usage overview quantification (Fig. 2A)
 
