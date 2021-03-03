@@ -85,7 +85,7 @@ The script, `PosMutationAlleleCountMotifVersion.py`, implements positional mutat
 
 The script, `PurifiedPositionAnnotation.py`, implements the annotation of each position in germline sequences according to the classification in the MS (i. e. silent, replacement and composite). The input files contain allele-wise positional mutation information (e. g. `z.mut_type.IGHV1-18.01.txt`). The output files contain loci-type-annotated positional mutation information (e. g. `z.mut_type.IGHV1-18.01.txt.flag`).
 
-##### Count the matrix files for motif and nucleotide transition based on consensus sequence
+##### Motif and nucleotide transition matrix generation
 
 `python CountPurifiedMotifAndNT.py`
 
@@ -103,7 +103,7 @@ T	1.983214223	2.239544164	0.809600205	0
 
 `python PosMutationAlleleCount.py -i allele.txt -d outdir -r IGHV.reference.fasta`
 
-The script, `PosMutationAlleleCount.py`, implements positional mutation frequency calculation, which likes the script `PosMutationAlleleCountMotifVersion.py`, but the output files (e. g. `z.IGHV1-18.01.pos.mut.txt`) provided calculated mutation frequency per position per allele. The input files are same as the script `PosMutationAlleleCountMotifVersion.py`.
+The script, `PosMutationAlleleCount.py`, implements positional mutation frequency calculation, which likes the script `PosMutationAlleleCountMotifVersion.py`, but the output files (e. g. `z.IGHV1-18.01.pos.mut.txt`) provides calculated mutation frequency per position per allele. The input files are same as the script `PosMutationAlleleCountMotifVersion.py`.
 
 `python CountMutationFreqArray.py -r IGHV.reference.fasta`
 
@@ -156,12 +156,12 @@ The script, `PlotProfileHeatmap.py`, implements the visualization of positional 
 
 
 #### Position weight matrix approach
-#### Motif mutation profile (Fig. 5A)
+##### Motif mutation profile (Fig. 5A)
 
 
 `python motif_mut_freq_cal_for_single_sample.py sample alignments.txt clones.txt`
 
-The script, `motif_mut_freq_cal_for_single_sample.py`, implements motif mutation profile quantification for each sample. It takes three parameters as input, which include the sample id (`sample`) and the path to `alignments.txt` and `clones.txt` output by MiXCR for each sample. Noted that a column `cloneId` is required in `alignments.txt` for determining the relationship between reads and clones. This script outputs for each sample a file named `*_motif_stat.txt` that records the germline count for each motif and the count for each mutunt nucleotide.
+The script, `motif_mut_freq_cal_for_single_sample.py`, implements motif mutation profile quantification for each sample. It takes three parameters as input, which include the sample id, `sample`, and the path to `alignments.txt` and `clones.txt` output by MiXCR for each sample. Noted that a column `cloneId` is required in `alignments.txt` for determining the relationship between reads and clones. This script outputs for each sample a file named `*_motif_stat.txt` that records the germline count for each motif and the count for each mutunt nucleotide.
 
 `python motif_mut_freq_merge_for_multiple_samples.py pathfile`
 
