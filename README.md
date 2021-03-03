@@ -94,7 +94,7 @@ G	3.977638529	1.787416014	0	0.798690939
 T	1.983214223	2.239544164	0.809600205	0
 ```
 
-##### Count the matrix file for Fig5C.
+##### Count the matrix file for Fig. 5C
 
 `python PosMutationAlleleCount.py -i allele.txt -d outdir -r IGHV.reference.fasta`
 
@@ -136,8 +136,9 @@ The script, `PlotMotifFraction.py`, implements the visualization of motif result
 
 The script, `PlotProfileHeatmap.py`, implements the visualization of motif result. It takes 4 parameters: `positional.mutation.file.txt`, this file could be produced by `CountMutationRateArray.py`, the second parameter `average.mutation.file.txt`, this file could be produced by `CountProfileAnnoFigure.py`, the third parameter means the name of datasets such as "IGHG.F", the last parameter means the directory path of output. The output looks like:
 
+![positionalmutationprofile](figures/SHM_positional_mutation_profile.png)
 
-#### Motif mutation profile (Fig. 6A)
+#### Motif mutation profile (Fig. 5A)
 
 #### Position weight matrix approach
 
