@@ -94,7 +94,7 @@ G	3.977638529	1.787416014	0	0.798690939
 T	1.983214223	2.239544164	0.809600205	0
 ```
 
-##### Count the matrix file for Fig. 5C
+##### Positional mutation frequency calculation (Fig. 5C)
 
 `python PosMutationAlleleCount.py -i allele.txt -d outdir -r IGHV.reference.fasta`
 
@@ -133,7 +133,7 @@ IGHV7	0	0	1.110821822	1.029055673	3.560066769	3.036884423	0.714363587	...
 All	0	0	5.101234748	4.73659655	3.949754076	5.329078999	2.588784633	...
 ```
 
-##### Plot figures of motif
+##### Motif mutation profile visualization
 
 `python PlotMotifFraction.py -i Fig.5b.Purified_Nonsyn.motif.txt -type data_type -d outdir`
 
@@ -141,7 +141,7 @@ The script, `PlotMotifFraction.py`, implements the visualization of motif mutati
  
 ![motifmutationprofile](figures/SHM_motif_mutation_profile.png)
 
-##### Plot figures of heatmap
+##### Positional mutation frequency visualization
 
 `python PlotProfileHeatmap.py -p Fig.5c_d.profile.mut.rate.txt -a Fig.5c_d.profile.mut.avg.freq.txt -type data_type -d outdir`
 
