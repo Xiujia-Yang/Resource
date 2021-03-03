@@ -103,7 +103,7 @@ T	1.983214223	2.239544164	0.809600205	0
 
 `python PosMutationAlleleCount.py -i allele.txt -d outdir -r IGHV.reference.fasta`
 
-The script, `PosMutationAlleleCount.py`, implements positional mutation frequency calculation, which likes the script `PosMutationAlleleCountMotifVersion.py`, but the output files could be used to count the detailed mutation frequency per position per allele, (i. e. `z.IGHV1-18.01.pos.mut.txt`), and the input files are same as the script `PosMutationAlleleCountMotifVersion.py`.
+The script, `PosMutationAlleleCount.py`, implements positional mutation frequency calculation, which likes the script `PosMutationAlleleCountMotifVersion.py`, but the output files (e. g. `z.IGHV1-18.01.pos.mut.txt`) provided calculated mutation frequency per position per allele. The input files are same as the script `PosMutationAlleleCountMotifVersion.py`.
 
 `python CountMutationFreqArray.py -r IGHV.reference.fasta`
 
