@@ -74,17 +74,17 @@ The script, `GetConsensusSequence.py`, implements the determination of consensus
 
 `python PosMutationAlleleCountMotifVersion.py -i allele.txt -d outdir -r IGHV.reference.fasta`
 
-The script, `PosMutationAlleleCountMotifVersion.py`, implements positional mutation frequency calculation for each allele per sample. It takes 3 parametes as input: `allele.txt` contains consenesus sequences for each allele per sample, such as:`IGHV1-18.01.txt`, `outdir` is the output directory, the default output is current work directory, `IGHV.reference.fasta` contains sequence and region length information for functional alleles. The output files are named in a way like `z.mut_type.IGHV1-18.01.txt`.
+The script, `PosMutationAlleleCountMotifVersion.py`, implements positional mutation frequency calculation for each allele per sample. It takes 3 parametes as input: `allele.txt` contains consenesus sequences for each allele per sample, such as:`IGHV1-18.01.txt`, `outdir` is the output directory, the default output is current work directory, `IGHV.reference.fasta` contains sequence and region length information for functional alleles. The output files contain allele-wise positional mutation information that are named in a way like `z.mut_type.IGHV1-18.01.txt`.
 
 `python PurifiedPositionAnnotation.py`
 
-The script, `PurifiedPositionAnnotation.py`, implements the annotation of each position in germline sequences according to the classification in the MS (i. e. silent, replacement and composite). The input files are every mutation file, such as: `z.mut_type.IGHV1-18.01.txt`. The output file is: `z.mut_type.IGHV1-18.01.txt.flag`.
+The script, `PurifiedPositionAnnotation.py`, implements the annotation of each position in germline sequences according to the classification in the MS (i. e. silent, replacement and composite). The input files contain allele-wise positional mutation information (e. g. `z.mut_type.IGHV1-18.01.txt`). The output files contain loci-type-annotated positional mutation information (e. g. `z.mut_type.IGHV1-18.01.txt.flag`).
 
 ##### Count the matrix files for motif and nucleotide transition based on consensus sequence
 
 `python CountPurifiedMotifAndNT.py`
 
-The script, `CountPurifiedMotifAndNT.py`, implements count the matrix files for motif and nucleotide transition. The input files based on all files by the script `PosMutationAlleleCountMotifVersion.py`. The output of motif is similar to the result from PWM, and the output of nucleotide transition looks like:
+The script, `CountPurifiedMotifAndNT.py`, implements the generation of motif and nucleotide transition matrixes. The input files are the outputs of script `PosMutationAlleleCountMotifVersion.py`. The output of motif is as `motif_mut_profile_merged.txt` described below, and the output of nucleotide transition looks like:
 
 ```
 	A	C	G	T
@@ -98,11 +98,11 @@ T	1.983214223	2.239544164	0.809600205	0
 
 `python PosMutationAlleleCount.py -i allele.txt -d outdir -r IGHV.reference.fasta`
 
-The script, `PosMutationAlleleCount.py`, implements count the positional mutation rate likes the script `PosMutationAlleleCountMotifVersion.py`, but the output of this files could be used to count the detailed mutation rate per position per allele such as: `z.IGHV1-18.01.pos.mut.txt`, and the input files are same with the script `PosMutationAlleleCountMotifVersion.py`.
+The script, `PosMutationAlleleCount.py`, implements positional mutation frequency calculation, which likes the script `PosMutationAlleleCountMotifVersion.py`, but the output files could be used to count the detailed mutation frequency per position per allele, (i. e. `z.IGHV1-18.01.pos.mut.txt`), and the input files are same as the script `PosMutationAlleleCountMotifVersion.py`.
 
-`python CountMutationRateArray.py -r IGHV.reference.fasta`
+`python CountMutationFreqArray.py -r IGHV.reference.fasta`
 
-The script, `CountMutationRateArray.py`, implements count the matrix for positional mutation. The input files based on the output from script `PosMutationAlleleCount.py` and the `IGHV.reference.fasta` means the file which record the sequences and region length for functional alleles. The name of output file is `Fig.5c_d.profile.mut.rate.txt` and the file looks like:
+The script, `CountMutationFreqArray.py`, implements the generation of positional mutation matrix. The input files are based on the outputs of script `PosMutationAlleleCount.py` and the `IGHV.reference.fasta` described above. The output file, `Fig.5c_d.profile.mut.freq.txt`, looks like:
 
 ```
 Germline_id	Family	Clone_number	FR1	FR1	FR1	FR1 ...
@@ -120,21 +120,32 @@ IGHV1-2.02	IGHV1	8140	0	0	1.867321867	1.535626536 ...
 
 `python CountProfileAnnoFigure.py Fig.5c_d.profile.mut.rate.txt`
 
-The script `Fig.5c_d.profile.mut.rate.txt`, implements count the average mutation rate per position. The input file is produced by script `CountMutationRateArray.py`, and the name of output file is `Fig.5c_d.profile.mut.avg.rate.txt`.
+The script `CountProfileAnnoFigure.py`, implements the calculation of average mutation frequency per position per gene family. The input file is produced by script `CountMutationFreqArray.py`, and the output file is `Fig.5c_d.profile.mut.avg.freq.txt`, which looks like,
+```
+Family	0	1	2	3	4	5	6	...
+IGHV1	0	0	2.2558699	2.115502799	5.278513178	4.708387966	2.741299932	...
+IGHV2	0	0	3.087357819	3.262385197	0.343029214	4.2970153	3.071594905	...
+IGHV3	0	0	6.130498167	2.796983631	4.602246122	5.786101052	3.423237516	...
+IGHV4	0	0	6.317384036	11.01710885	3.712848775	4.900815076	1.534719161	...
+IGHV5	0	0	7.844747882	0.81460539	1.514698427	1.83484034	0.574987494	...
+IGHV6	0	0	2.831498797	4.363040991	0.590207914	44.56779895	2.698544206	...
+IGHV7	0	0	1.110821822	1.029055673	3.560066769	3.036884423	0.714363587	...
+All	0	0	5.101234748	4.73659655	3.949754076	5.329078999	2.588784633	...
+```
 
 ##### Plot figures of motif
 
 `python PlotMotifFraction.py -i Fig.5b.Purified_Nonsyn.motif.txt -type data_type -d outdir`
 
-The script, `PlotMotifFraction.py`, implements the visualization of motif result. It takes 3 parameters: `Fig.5b.Purified_Nonsyn.motif.txt`, the format of this file could be referred to the previous section `Motif mutation profile`, the second parameter means the name of datasets such as "Purified_Nonsyn", and the third parameter means the directory path of output. The output looks like:
+The script, `PlotMotifFraction.py`, implements the visualization of motif mutation profile. It takes 3 parameters: `Fig.5b.Purified_Nonsyn.motif.txt`, the format of this file could be referred to the previous section `Motif mutation profile`, the second parameter specifies the category of the loci, such as "Purified_Nonsyn", and the third parameter specifies the output directory. The output looks like:
  
 ![motifmutationprofile](figures/SHM_motif_mutation_profile.png)
 
 ##### Plot figures of heatmap
 
-`python PlotProfileHeatmap.py -p Fig.5c_d.profile.mut.rate.txt -a Fig.5c_d.profile.mut.avg.rate.txt -type data_type -d outdir`
+`python PlotProfileHeatmap.py -p Fig.5c_d.profile.mut.rate.txt -a Fig.5c_d.profile.mut.avg.freq.txt -type data_type -d outdir`
 
-The script, `PlotProfileHeatmap.py`, implements the visualization of motif result. It takes 4 parameters: `positional.mutation.file.txt`, this file could be produced by `CountMutationRateArray.py`, the second parameter `average.mutation.file.txt`, this file could be produced by `CountProfileAnnoFigure.py`, the third parameter means the name of datasets such as "IGHG.F", the last parameter means the directory path of output. The output looks like:
+The script, `PlotProfileHeatmap.py`, implements the visualization of positional mutation frequency profile. It takes 4 parameters: `positional.mutation.file.txt`, this file can be produced by `CountMutationFreqArray.py`, the second parameter `average.mutation.file.txt`, this file can be produced by `CountProfileAnnoFigure.py`, the third parameter specifies datasets such as "IGHG.F", the last parameter specifies the output directory. The output looks like:
 
 ![positionalmutationprofile](figures/SHM_positional_mutation_profile.png)
 
