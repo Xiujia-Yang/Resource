@@ -58,27 +58,27 @@ The script, `obtainCoreGene.py`, implements the core V gene selection and visual
 ## Somatic hypermutation
 ### Scripts
 #### Consensus sequence approach
-##### Select avaliable clones
+##### Obtain qualified clones
 
-`python ExtractAvaliableCloneData.py alignments.txt clones.txt`
+`python ExtractAvailableCloneData.py alignments.txt clones.txt`
 
-The script, `ExtractAvaliableCloneData.py`, implements select clones which meet our requirement for each sample. It takes 2 files as input, these files are `alignments.txt` and `clones.txt` from MiXCR. The output are files which named by `cloneId`.
+The script, `ExtractAvailableCloneData.py`, implements the selection of qualified clones that meet our criteria specified in the MS. It takes 2 files as input, these files are `alignments.txt` and `clones.txt` from MiXCR. The output are files named after `cloneId` initially assigned by MiXCR.
 
 ##### Get consensus sequences
 
 `python GetConsensusSequence.py`
 
-The script, ` GetConsensusSequence.py`, implements get consensus sequences from per clones. The input files are all avaliable clone files by the output from `ExtractAvaliableCloneData.py`, and the output record the aligned information of consensus sequences per clone.
+The script, `GetConsensusSequence.py`, implements the determination of consensus sequence from each clone. The input files are all available clone files  output by `ExtractAvailableCloneData.py`, and the output record the alignment information of consensus sequences for each clone.
 
-##### Count the mutation rate of positional mutation rate
+##### Positional mutation frequency calculation
 
 `python PosMutationAlleleCountMotifVersion.py -i allele.txt -d outdir -r IGHV.reference.fasta`
 
-The script, `PosMutationAlleleCountMotifVersion.py`, implements count the positional mutation rate for per allele. It takes 3 parametes to input: `allele.txt` means the consenesus files which groupby the per allele per sample, such as:`IGHV1-18.01.txt`, `outdir` means the directory of output, the default output is current path, `IGHV.reference.fasta` means the file which record the sequences and region length for functional alleles. The name of output file such as: `z.mut_type.IGHV1-18.01.txt`.
+The script, `PosMutationAlleleCountMotifVersion.py`, implements positional mutation frequency calculation for each allele per sample. It takes 3 parametes as input: `allele.txt` contains consenesus sequences for each allele per sample, such as:`IGHV1-18.01.txt`, `outdir` is the output directory, the default output is current work directory, `IGHV.reference.fasta` contains sequence and region length information for functional alleles. The output files are named in a way like `z.mut_type.IGHV1-18.01.txt`.
 
 `python PurifiedPositionAnnotation.py`
 
-The script, `PurifiedPositionAnnotation.py`, implements the annoation of position. The input files are every mutation file, such as: `z.mut_type.IGHV1-18.01.txt`. The output file is: `z.mut_type.IGHV1-18.01.txt.flag`.
+The script, `PurifiedPositionAnnotation.py`, implements the annotation of each position in germline sequences according to the classification in the MS (i. e. silent, replacement and composite). The input files are every mutation file, such as: `z.mut_type.IGHV1-18.01.txt`. The output file is: `z.mut_type.IGHV1-18.01.txt.flag`.
 
 ##### Count the matrix files for motif and nucleotide transition based on consensus sequence
 
@@ -138,9 +138,9 @@ The script, `PlotProfileHeatmap.py`, implements the visualization of motif resul
 
 ![positionalmutationprofile](figures/SHM_positional_mutation_profile.png)
 
-#### Motif mutation profile (Fig. 5A)
 
 #### Position weight matrix approach
+#### Motif mutation profile (Fig. 5A)
 
 
 `python motif_mut_freq_cal_for_single_sample.py sample alignments.txt clones.txt`
