@@ -214,7 +214,9 @@ The scripts, `positional_mut_freq_profile.py`, implements the generation of posi
 The scripts, `regional_mut_freq_trans_anno.py`, implements the format transformation and annotation of regional mutation frequency statistics (i. e. `sample_mut_freq_stat.txt`) for each sample. The transformation simplifies the visualization process. It takes three parameters as input, which include the sample id (`sample`), the preliminary regional mutation frequency statistics file (`sample_mut_freq_stat.txt`), and the output direcotry. Its output is a transformed and annotated regional mutation frequency statistics file (`sample_mut_freq_trans_anno.txt`). 
 
 Here we utilized shell commandline to combine statistics files of multiple samples.
+
 `cat outdir/* | awk '!($0~/cloneId/ && NR!=1)' >mut_freq_trans_anno_comb.txt`
+
 Note that `outdir` here refer to the output directory specified for script `regional_mut_freq_trans_anno.py`.
 
 `python mut_freq_cmp_bwt_age_group.py mut_comb_fl`
