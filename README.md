@@ -220,7 +220,7 @@ Note that `outdir` here refer to the output directory specified for script `regi
 `python mut_freq_cmp_bwt_age_group.py mut_comb_fl`
 The script, `mut_freq_cmp_bwt_age_group.py`, implements the visualization of comparison of regional mutation frequency between different age groups. It takes only the combined regional mutation frequency statistics files as input (i. e. `mut_freq_trans_anno_comb.txt`). The output looks like,
 
-![regionalmutfreqcmp](figures/regional_mut_freq_bwt_age_groups_IGHG)
+![regionalmutfreqcmp](figures/regional_mut_freq_bwt_age_groups_IGHG.png)
 
 `python mut_freq_age_corr.py mut_comb_fl`
 The script, `mut_freq_age_corr.py`, implements the analysis of the correlation between overall mutation frequency (from FR1 to FR3) and age. It takes only the combined regional mutation frequency statistics files as input (i. e. `mut_freq_trans_anno_comb.txt`). Its outputs include a figure demonstrating the correlation and a file recording the linear model parameters. The figure looks like,
