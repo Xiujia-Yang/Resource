@@ -156,8 +156,100 @@ The script, `PlotProfileHeatmap.py`, implements the visualization of positional 
 
 
 #### Position weight matrix approach
-##### Motif mutation profile (Fig. 5A)
 
+##### Sample-wise positional and regional mutation frequency quantification
+
+`python positional_mut_freq_for_each_sample.py sample alignments.txt clones.txt isotype outdir`
+
+The script, `positional_mut_freq_for_each_sample.py`, implements the positional mutation frequency calculation for alleles in each sample. It takes five parameters as input, which include the sample id (`sample`), the path to `alignments.txt` and `clones.txt` output by MiXCR for each sample, the isotype (i. e. "IGHG") included for analysis, and the output directory. It outputs a directory structure as below.
+
+```
+- outdir
+	- productive
+		- sample1-IGHG
+			- IGHV1-18.01.pos.mut.type.stat
+			- IGHV1-18.04.pos.mut.type.stat
+			...
+			- IGHV7-4-1.02.pos.mut.type.stat
+		- sample1-IGHA
+		...
+		- sample2-IGHG
+	- unproductive
+	...
+```
+Under the tertiary directory, (e. g. `sample-IGHG`) are output files recording positional mutation information for distinct alleles, each of which looks like,
+```
+pos	ref	A	T	C	G	is_synA	is_synT	is_synC	is_synG	nReads
+0	C	0.000	0.000	0.000	0.000	No	No	Yes	No	327
+1	A	0.000	0.000	0.000	0.000	Yes	No	No	No	327
+2	G	0.000	1.083	0.583	0.000	Yes	No	No	Yes	327
+...
+284	C	0.000	1.000	0.000	0.000	No	Yes	Yes	No	327
+```
+
+`python regional_mut_freq_for_each_sample.py sample alignment.txt clones.txt`
+
+The script, `regional_mut_freq_for_each_sample.py`, implements regional mutation frequency for each sample. It takes three parameters as input, which include the sample id (`sample`), the path to `alignments.txt` and `clones.txt` output by MiXCR for each sample. Its output is a file named as `sample_mut_freq_stat.txt`, which records the mutation frequencies for different regions for each clone. The output looks like,
+```
+cloneId	vAllele	isotype	productivity	allMutRate	fr1MutRate	cdr1MutRate	fr2MutRate	cdr2MutRate	fr3MutRate	nAvaiReads
+0	IGHV4-39*07	IGHG2*00	productive	0.10590277777777778	0.06266666666666666	0.19333333333333333	0.06274509803921569	0.2857142857142857 0.0972972972972973	10
+1	IGHV4-39*07	IGHG2*00	productive	0.08543836805555556	0.044583333333333336	0.16458333333333333	0.08075980392156863	0.1529761904761905 0.08102477477477478	160
+2	IGHV1-24*01	IGHGP*00	productive	0.11594202898550725	0.07173913043478261	0.17844202898550723	0.12489343563512362	0.137228260869565220.1235801018409714	92
+3	IGHV4-39*07	IGHG1*00	productive	0.06253858024691358	0.03155555555555556	0.07148148148148148	0.04183006535947712	0.108465608465608460.08188188188188188	90
+```
+
+##### Positional mutation profile based on multiple samples
+
+`python positional_mut_freq_profile.py allelelist indir`
+
+The scripts, `positional_mut_freq_profile.py`, implements the generation of positional mutation frequency profile. It takes two parameters as input, which include a file recording the list of alleles (e. g. `functional.allele.id.list.txt`) included for analysis and the directory containing positional mutation information for alleles for each sample (i. e. `outdir/productive` output by script `positional_mut_freq_for_each_sample.py`). It outputs three files, 
+- `allele_sample_clone_number.txt`  # the file recording the number of samples and clones associated with an allele
+- `positional_mut_freq_matrix.txt`  # the positional mutation frequency matrix with each row being an allele and each column being a position
+- `region_length_for_matrix_anno.txt`  # the file recording the length of each region in the matrix above
+
+##### Regional mutation comparison and correlation with age
+
+`python regional_mut_freq_trans_anno.py sample statfl outdir`
+
+The scripts, `regional_mut_freq_trans_anno.py`, implements the format transformation and annotation of regional mutation frequency statistics (i. e. `sample_mut_freq_stat.txt`) for each sample. The transformation simplifies the visualization process. It takes three parameters as input, which include the sample id (`sample`), the preliminary regional mutation frequency statistics file (`sample_mut_freq_stat.txt`), and the output direcotry. Its output is a transformed and annotated regional mutation frequency statistics file (`sample_mut_freq_trans_anno.txt`). 
+
+Here we utilized shell commandline to combine statistics files of multiple samples.
+`cat outdir/* | awk '!($0~/cloneId/ && NR!=1)' >mut_freq_trans_anno_comb.txt`
+Note that `outdir` here refer to the output directory specified for script `regional_mut_freq_trans_anno.py`.
+
+`python mut_freq_cmp_bwt_age_group.py mut_comb_fl`
+The script, `mut_freq_cmp_bwt_age_group.py`, implements the visualization of comparison of regional mutation frequency between different age groups. It takes only the combined regional mutation frequency statistics files as input (i. e. `mut_freq_trans_anno_comb.txt`). The output looks like,
+
+![regionalmutfreqcmp](figures/regional_mut_freq_bwt_age_groups_IGHG)
+
+`python mut_freq_age_corr.py mut_comb_fl`
+The script, `mut_freq_age_corr.py`, implements the analysis of the correlation between overall mutation frequency (from FR1 to FR3) and age. It takes only the combined regional mutation frequency statistics files as input (i. e. `mut_freq_trans_anno_comb.txt`). Its outputs include a figure demonstrating the correlation and a file recording the linear model parameters. The figure looks like,
+
+![mutfreqageregression](figures/mut_freq_age_regression_IGHG.png)
+
+The file recording linear model parameters looks like,
+```
+isotype	gender	coef	intercept	R-squared
+IGHA	Female	0.0003539150426987656	0.06528877132748681	0.0433362868691467
+IGHA	Male	0.0011655075044146098	0.04149377931949247	0.2966713591064206
+IGHD	Female	0.0005268099127560729	0.0005754457476520349	0.00993267480203841
+IGHD	Male	-0.00014748343401274752	0.022942479708302866	0.005795231577692572
+IGHE	Male	-0.013897958621196298	0.5243554461429831	0.4658613277026857
+IGHE	Female	0.0	0.06745411347817634	0.0
+IGHG	Female	0.0004939193126108091	0.07200756953459697	0.2815953504945391
+IGHG	Male	0.0006523811359994215	0.06172890824735465	0.3716504319109728
+IGHM	Female	-0.0020613457777915816	0.08815766925102467	0.06996061254096253
+IGHM	Male	-0.0003308329053527781	0.0385303883641472	0.02563625588898499
+```
+
+##### Nucleotide conversion
+
+`python nt_conversion_stat.py sampleid_file isotype indir outdir`
+
+The script, `nt_conversion_stat.py`, implements the analysis of the nucleotide conversion and generate for each sample a nucleotide conversion matrix. It takes four parameters as input, which include a sample list file (`sampleid_file`), the isotype (i. e. "G", means "IGHG"), the directory containing positional mutation information for alleles for each sample (i. e. `outdir/productive`) and the output directory. Its outputs a file recording the nucleotide conversion statistics and a heatmap visualizaing the statistics. The figure looks like,
+
+
+##### Motif mutation profile (Fig. 5A)
 
 `python motif_mut_freq_cal_for_single_sample.py sample alignments.txt clones.txt`
 
