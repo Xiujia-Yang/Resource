@@ -65,31 +65,31 @@ The script, `obtainCoreGene.py`, implements the core V gene selection and visual
 #### Consensus sequence approach
 ##### Obtain qualified clones
 
-`python ExtractAvailableCloneData.py alignments.txt clones.txt`
+`python shm_ExtractAvailableCloneData.py alignments.txt clones.txt`
 
-The script, `ExtractAvailableCloneData.py`, implements the selection of qualified clones that meet our criteria specified in the MS. It takes 2 files as input, these files are `alignments.txt` and `clones.txt` from MiXCR. The output are files named after `cloneId` initially assigned by MiXCR.
+The script, `shm_ExtractAvailableCloneData.py`, implements the selection of qualified clones that meet our criteria specified in the MS. It takes 2 files as input, these files are `alignments.txt` and `clones.txt` from MiXCR. The output are files named after `cloneId` initially assigned by MiXCR.
 
 ##### Get consensus sequences
 
-`python GetConsensusSequence.py`
+`python shm_GetConsensusSequence.py`
 
-The script, `GetConsensusSequence.py`, implements the determination of consensus sequence from each clone. The input files are all available clone files  output by `ExtractAvailableCloneData.py`, and the output record the alignment information of consensus sequences for each clone.
+The script, `shm_GetConsensusSequence.py`, implements the determination of consensus sequence from each clone. The input files are all available clone files  output by `shm_ExtractAvailableCloneData.py`, and the output record the alignment information of consensus sequences for each clone.
 
 ##### Positional mutation frequency calculation
 
-`python PosMutationAlleleCountMotifVersion.py -i allele.txt -d outdir -r IGHV.reference.fasta`
+`python shm_PosMutationAlleleCountMotifVersion.py -i allele.txt -d outdir -r IGHV.reference.fasta`
 
-The script, `PosMutationAlleleCountMotifVersion.py`, implements positional mutation frequency calculation for each allele per sample. It takes 3 parametes as input: `allele.txt` contains consenesus sequences for each allele per sample, such as:`IGHV1-18.01.txt`, `outdir` is the output directory, the default output is current work directory, `IGHV.reference.fasta` contains sequence and region length information for functional alleles. The output files contain allele-wise positional mutation information that are named in a way like `z.mut_type.IGHV1-18.01.txt`.
+The script, `shm_PosMutationAlleleCountMotifVersion.py`, implements positional mutation frequency calculation for each allele per sample. It takes 3 parametes as input: `allele.txt` contains consenesus sequences for each allele per sample, such as:`IGHV1-18.01.txt`, `outdir` is the output directory, the default output is current work directory, `IGHV.reference.fasta` contains sequence and region length information for functional alleles. The output files contain allele-wise positional mutation information that are named in a way like `z.mut_type.IGHV1-18.01.txt`.
 
-`python PurifiedPositionAnnotation.py`
+`python shm_PurifiedPositionAnnotation.py`
 
-The script, `PurifiedPositionAnnotation.py`, implements the annotation of each position in germline sequences according to the classification in the MS (i. e. silent, replacement and composite). The input files contain allele-wise positional mutation information (e. g. `z.mut_type.IGHV1-18.01.txt`). The output files contain loci-type-annotated positional mutation information (e. g. `z.mut_type.IGHV1-18.01.txt.flag`).
+The script, `shm_PurifiedPositionAnnotation.py`, implements the annotation of each position in germline sequences according to the classification in the MS (i. e. silent, replacement and composite). The input files contain allele-wise positional mutation information (e. g. `z.mut_type.IGHV1-18.01.txt`). The output files contain loci-type-annotated positional mutation information (e. g. `z.mut_type.IGHV1-18.01.txt.flag`).
 
 ##### Motif and nucleotide transition matrix generation
 
-`python CountPurifiedMotifAndNT.py`
+`python shm_CountPurifiedMotifAndNT.py`
 
-The script, `CountPurifiedMotifAndNT.py`, implements the generation of motif and nucleotide transition matrixes. The input files are the outputs of script `PosMutationAlleleCountMotifVersion.py`. The output of motif is as `motif_mut_profile_merged.txt` described below, and the output of nucleotide transition looks like:
+The script, `shm_CountPurifiedMotifAndNT.py`, implements the generation of motif and nucleotide transition matrixes. The input files are the outputs of script `shm_PosMutationAlleleCountMotifVersion.py`. The output of motif is as `motif_mut_profile_merged.txt` described below, and the output of nucleotide transition looks like:
 
 ```
 	A	C	G	T
@@ -101,13 +101,13 @@ T	1.983214223	2.239544164	0.809600205	0
 
 ##### Positional mutation frequency calculation (Fig. 5C)
 
-`python PosMutationAlleleCount.py -i allele.txt -d outdir -r IGHV.reference.fasta`
+`python shm_PosMutationAlleleCount.py -i allele.txt -d outdir -r IGHV.reference.fasta`
 
-The script, `PosMutationAlleleCount.py`, implements positional mutation frequency calculation, which likes the script `PosMutationAlleleCountMotifVersion.py`, but the output files (e. g. `z.IGHV1-18.01.pos.mut.txt`) provides calculated mutation frequency per position per allele. The input files are same as the script `PosMutationAlleleCountMotifVersion.py`.
+The script, `shm_PosMutationAlleleCount.py`, implements positional mutation frequency calculation, which likes the script `shm_PosMutationAlleleCountMotifVersion.py`, but the output files (e. g. `z.IGHV1-18.01.pos.mut.txt`) provides calculated mutation frequency per position per allele. The input files are same as the script `shm_PosMutationAlleleCountMotifVersion.py`.
 
-`python CountMutationFreqArray.py -r IGHV.reference.fasta`
+`python shm_CountMutationFreqArray.py -r IGHV.reference.fasta`
 
-The script, `CountMutationFreqArray.py`, implements the generation of positional mutation matrix. The input files are based on the outputs of script `PosMutationAlleleCount.py` and the `IGHV.reference.fasta` described above. The output file, `Fig.5c_d.profile.mut.freq.txt`, looks like:
+The script, `shm_CountMutationFreqArray.py`, implements the generation of positional mutation matrix. The input files are based on the outputs of script `PosMutationAlleleCount.py` and the `IGHV.reference.fasta` described above. The output file, `Fig.5c_d.profile.mut.freq.txt`, looks like:
 
 ```
 Germline_id	Family	Clone_number	FR1	FR1	FR1	FR1 ...
@@ -123,9 +123,9 @@ IGHV1-2.02	IGHV1	8140	0	0	1.867321867	1.535626536 ...
 ...
 ```
 
-`python CountProfileAnnoFigure.py Fig.5c_d.profile.mut.rate.txt`
+`python shm_CountProfileAnnoFigure.py Fig.5c_d.profile.mut.rate.txt`
 
-The script `CountProfileAnnoFigure.py`, implements the calculation of average mutation frequency per position per gene family. The input file is produced by script `CountMutationFreqArray.py`, and the output file is `Fig.5c_d.profile.mut.avg.freq.txt`, which looks like,
+The script `shm_CountProfileAnnoFigure.py`, implements the calculation of average mutation frequency per position per gene family. The input file is produced by script `shm_CountMutationFreqArray.py`, and the output file is `Fig.5c_d.profile.mut.avg.freq.txt`, which looks like,
 ```
 Family	0	1	2	3	4	5	6	...
 IGHV1	0	0	2.2558699	2.115502799	5.278513178	4.708387966	2.741299932	...
@@ -140,17 +140,17 @@ All	0	0	5.101234748	4.73659655	3.949754076	5.329078999	2.588784633	...
 
 ##### Motif mutation profile visualization
 
-`python PlotMotifFraction.py -i Fig.5b.Purified_Nonsyn.motif.txt -type data_type -d outdir`
+`python shm_PlotMotifFraction.py -i Fig.5b.Purified_Nonsyn.motif.txt -type data_type -d outdir`
 
-The script, `PlotMotifFraction.py`, implements the visualization of motif mutation profile. It takes 3 parameters: `Fig.5b.Purified_Nonsyn.motif.txt`, the format of this file could be referred to the previous section `Motif mutation profile`, the second parameter specifies the category of the loci, such as "Purified_Nonsyn", and the third parameter specifies the output directory. The output looks like:
+The script, `shm_PlotMotifFraction.py`, implements the visualization of motif mutation profile. It takes 3 parameters: `Fig.5b.Purified_Nonsyn.motif.txt`, the format of this file could be referred to the previous section `Motif mutation profile`, the second parameter specifies the category of the loci, such as "Purified_Nonsyn", and the third parameter specifies the output directory. The output looks like:
  
 ![motifmutationprofile](figures/SHM_motif_mutation_profile.png)
 
 ##### Positional mutation frequency visualization
 
-`python PlotProfileHeatmap.py -p Fig.5c_d.profile.mut.rate.txt -a Fig.5c_d.profile.mut.avg.freq.txt -type data_type -d outdir`
+`python shm_PlotProfileHeatmap.py -p Fig.5c_d.profile.mut.rate.txt -a Fig.5c_d.profile.mut.avg.freq.txt -type data_type -d outdir`
 
-The script, `PlotProfileHeatmap.py`, implements the visualization of positional mutation frequency profile. It takes 4 parameters: `positional.mutation.file.txt`, this file can be produced by `CountMutationFreqArray.py`, the second parameter `average.mutation.file.txt`, this file can be produced by `CountProfileAnnoFigure.py`, the third parameter specifies datasets such as "IGHG.F", the last parameter specifies the output directory. The output looks like:
+The script, `shm_PlotProfileHeatmap.py`, implements the visualization of positional mutation frequency profile. It takes 4 parameters: `positional.mutation.file.txt`, this file can be produced by `shm_CountMutationFreqArray.py`, the second parameter `average.mutation.file.txt`, this file can be produced by `shm_CountProfileAnnoFigure.py`, the third parameter specifies datasets such as "IGHG.F", the last parameter specifies the output directory. The output looks like:
 
 ![positionalmutationprofile](figures/SHM_positional_mutation_profile.png)
 
@@ -159,7 +159,7 @@ The script, `PlotProfileHeatmap.py`, implements the visualization of positional 
 
 ##### Sample-wise positional and regional mutation frequency quantification
 
-`python positional_mut_freq_for_each_sample.py sample alignments.txt clones.txt isotype outdir`
+`python shm_positional_mut_freq_for_each_sample.py sample alignments.txt clones.txt isotype outdir`
 
 The script, `positional_mut_freq_for_each_sample.py`, implements the positional mutation frequency calculation for alleles in each sample. It takes five parameters as input, which include the sample id (`sample`), the path to `alignments.txt` and `clones.txt` output by MiXCR for each sample, the isotype (i. e. "IGHG") included for analysis, and the output directory. It outputs a directory structure as below.
 
@@ -187,9 +187,9 @@ pos	ref	A	T	C	G	is_synA	is_synT	is_synC	is_synG	nReads
 284	C	0.000	1.000	0.000	0.000	No	Yes	Yes	No	327
 ```
 
-`python regional_mut_freq_for_each_sample.py sample alignment.txt clones.txt`
+`python shm_regional_mut_freq_for_each_sample.py sample alignment.txt clones.txt`
 
-The script, `regional_mut_freq_for_each_sample.py`, implements regional mutation frequency for each sample. It takes three parameters as input, which include the sample id (`sample`), the path to `alignments.txt` and `clones.txt` output by MiXCR for each sample. Its output is a file named as `sample_mut_freq_stat.txt`, which records the mutation frequencies for different regions for each clone. The output looks like,
+The script, `shm_regional_mut_freq_for_each_sample.py`, implements regional mutation frequency for each sample. It takes three parameters as input, which include the sample id (`sample`), the path to `alignments.txt` and `clones.txt` output by MiXCR for each sample. Its output is a file named as `sample_mut_freq_stat.txt`, which records the mutation frequencies for different regions for each clone. The output looks like,
 ```
 cloneId	vAllele	isotype	productivity	allMutRate	fr1MutRate	cdr1MutRate	fr2MutRate	cdr2MutRate	fr3MutRate	nAvaiReads
 0	IGHV4-39*07	IGHG2*00	productive	0.10590277777777778	0.06266666666666666	0.19333333333333333	0.06274509803921569	0.2857142857142857 0.0972972972972973	10
@@ -200,18 +200,18 @@ cloneId	vAllele	isotype	productivity	allMutRate	fr1MutRate	cdr1MutRate	fr2MutRat
 
 ##### Positional mutation profile based on multiple samples
 
-`python positional_mut_freq_profile.py allelelist indir`
+`python shm_positional_mut_freq_profile.py allelelist indir`
 
-The scripts, `positional_mut_freq_profile.py`, implements the generation of positional mutation frequency profile. It takes two parameters as input, which include a file recording the list of alleles (e. g. `functional.allele.id.list.txt`) included for analysis and the directory containing positional mutation information for alleles for each sample (i. e. `outdir/productive` output by script `positional_mut_freq_for_each_sample.py`). It outputs three files, 
+The scripts, `shm_positional_mut_freq_profile.py`, implements the generation of positional mutation frequency profile. It takes two parameters as input, which include a file recording the list of alleles (e. g. `functional.allele.id.list.txt`) included for analysis and the directory containing positional mutation information for alleles for each sample (i. e. `outdir/productive` output by script `shm_positional_mut_freq_for_each_sample.py`). It outputs three files, 
 - `allele_sample_clone_number.txt`  # the file recording the number of samples and clones associated with an allele
 - `positional_mut_freq_matrix.txt`  # the positional mutation frequency matrix with each row being an allele and each column being a position
 - `region_length_for_matrix_anno.txt`  # the file recording the length of each region in the matrix above
 
 ##### Regional mutation comparison and correlation with age
 
-`python regional_mut_freq_trans_anno.py sample statfl outdir`
+`python shm_regional_mut_freq_trans_anno.py sample statfl outdir`
 
-The scripts, `regional_mut_freq_trans_anno.py`, implements the format transformation and annotation of regional mutation frequency statistics (i. e. `sample_mut_freq_stat.txt`) for each sample. The transformation simplifies the visualization process. It takes three parameters as input, which include the sample id (`sample`), the preliminary regional mutation frequency statistics file (`sample_mut_freq_stat.txt`), and the output direcotry. Its output is a transformed and annotated regional mutation frequency statistics file (`sample_mut_freq_trans_anno.txt`). 
+The scripts, `shm_regional_mut_freq_trans_anno.py`, implements the format transformation and annotation of regional mutation frequency statistics (i. e. `sample_mut_freq_stat.txt`) for each sample. The transformation simplifies the visualization process. It takes three parameters as input, which include the sample id (`sample`), the preliminary regional mutation frequency statistics file (`sample_mut_freq_stat.txt`), and the output direcotry. Its output is a transformed and annotated regional mutation frequency statistics file (`sample_mut_freq_trans_anno.txt`). 
 
 Here we utilized shell commandline to combine statistics files of multiple samples.
 
@@ -219,13 +219,13 @@ Here we utilized shell commandline to combine statistics files of multiple sampl
 
 Note that `outdir` here refer to the output directory specified for script `regional_mut_freq_trans_anno.py`.
 
-`python mut_freq_cmp_bwt_age_group.py mut_comb_fl`
+`python shm_mut_freq_cmp_bwt_age_group.py mut_comb_fl`
 The script, `mut_freq_cmp_bwt_age_group.py`, implements the visualization of comparison of regional mutation frequency between different age groups. It takes only the combined regional mutation frequency statistics files as input (i. e. `mut_freq_trans_anno_comb.txt`). The output looks like,
 
 ![regionalmutfreqcmp](figures/regional_mut_freq_bwt_age_groups_IGHG.png)
 
-`python mut_freq_age_corr.py mut_comb_fl`
-The script, `mut_freq_age_corr.py`, implements the analysis of the correlation between overall mutation frequency (from FR1 to FR3) and age. It takes only the combined regional mutation frequency statistics files as input (i. e. `mut_freq_trans_anno_comb.txt`). Its outputs include a figure demonstrating the correlation and a file recording the linear model parameters. The figure looks like,
+`python shm_mut_freq_age_corr.py mut_comb_fl`
+The script, `shm_mut_freq_age_corr.py`, implements the analysis of the correlation between overall mutation frequency (from FR1 to FR3) and age. It takes only the combined regional mutation frequency statistics files as input (i. e. `mut_freq_trans_anno_comb.txt`). Its outputs include a figure demonstrating the correlation and a file recording the linear model parameters. The figure looks like,
 
 ![mutfreqageregression](figures/mut_freq_age_regression_IGHG.png)
 
@@ -246,20 +246,20 @@ IGHM	Male	-0.0003308329053527781	0.0385303883641472	0.02563625588898499
 
 ##### Nucleotide conversion
 
-`python nt_conversion_stat.py sampleid_file isotype indir outdir`
+`python shm_nt_conversion_stat.py sampleid_file isotype indir outdir`
 
-The script, `nt_conversion_stat.py`, implements the analysis of the nucleotide conversion and generate for each sample a nucleotide conversion matrix. It takes four parameters as input, which include a sample list file (`sampleid_file`), the isotype (i. e. "G", means "IGHG"), the directory containing positional mutation information for alleles for each sample (i. e. `outdir/productive`) and the output directory. Its outputs a file recording the nucleotide conversion statistics and a heatmap visualizaing the statistics. The figure looks like,
+The script, `shm_nt_conversion_stat.py`, implements the analysis of the nucleotide conversion and generate for each sample a nucleotide conversion matrix. It takes four parameters as input, which include a sample list file (`sampleid_file`), the isotype (i. e. "G", means "IGHG"), the directory containing positional mutation information for alleles for each sample (i. e. `outdir/productive`) and the output directory. Its outputs a file recording the nucleotide conversion statistics and a heatmap visualizaing the statistics. The figure looks like,
 
 
 ##### Motif mutation profile (Fig. 5A)
 
-`python motif_mut_freq_cal_for_single_sample.py sample alignments.txt clones.txt`
+`python shm_motif_mut_freq_cal_for_single_sample.py sample alignments.txt clones.txt`
 
-The script, `motif_mut_freq_cal_for_single_sample.py`, implements motif mutation profile quantification for each sample. It takes three parameters as input, which include the sample id, `sample`, and the path to `alignments.txt` and `clones.txt` output by MiXCR for each sample. Noted that a column `cloneId` is required in `alignments.txt` for determining the relationship between reads and clones. This script outputs for each sample a file named `*_motif_stat.txt` that records the germline count for each motif and the count for each mutunt nucleotide.
+The script, `shm_motif_mut_freq_cal_for_single_sample.py`, implements motif mutation profile quantification for each sample. It takes three parameters as input, which include the sample id, `sample`, and the path to `alignments.txt` and `clones.txt` output by MiXCR for each sample. Noted that a column `cloneId` is required in `alignments.txt` for determining the relationship between reads and clones. This script outputs for each sample a file named `*_motif_stat.txt` that records the germline count for each motif and the count for each mutunt nucleotide.
 
-`python motif_mut_freq_merge_for_multiple_samples.py pathfile`
+`python shm_motif_mut_freq_merge_for_multiple_samples.py pathfile`
 
-The script, `motif_mut_freq_merge_for_multiple_samples.py`, implements the merge of individual statistical files output by `motif_mut_freq_cal_for_single_sample.py`. It takes only a file that records the paths to all individual file as input and output a merged statistical file named `motif_mut_profile_merged.txt`, which looks like
+The script, `shm_motif_mut_freq_merge_for_multiple_samples.py`, implements the merge of individual statistical files output by `shm_motif_mut_freq_cal_for_single_sample.py`. It takes only a file that records the paths to all individual file as input and output a merged statistical file named `motif_mut_profile_merged.txt`, which looks like
 
 ```
 Motif	Percentage	Mutated_num	Germline_num	A	C	G	T	A_mut	C_mut	G_mut	T_mut
