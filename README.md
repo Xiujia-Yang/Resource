@@ -81,6 +81,7 @@ The script, `DDFusioninCellType.py`, shows the frequency of DD fusion in differe
 
 The script, `DDFusionGene.py`, shows D gene combinatorial frequency in all DD fusions and the span of the two D gene in DD fusion. The script takes four parameters as input, including the output of IgScout, the locations of D genes, and the name of two output figures.
 
+![ddheatmap](figures/DDheatmap.png)
 ![ddspan](figures/DDspan.png)
 
 
