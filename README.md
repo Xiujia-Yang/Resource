@@ -279,13 +279,13 @@ T	6.54	98286.75	1502607.0	17.56	38.15	44.28	0.0	17261.95	37498.82	43525.98	0.0
 ## Public clone
 ### Preliminary statistics
 * [PUB_all_to_all_repertoire_comparison_matrix.csv.gz](data/PUB_all_to_all_repertoire_comparison_matrix.csv.gz) 
-	- The 2152*2152 matrix recording all-to-all repertoire comparisons (Fig. 5A in MS)
+	- The 2152*2152 matrix recording all-to-all repertoire comparisons (Fig. 4A in MS)
 * [PUB_pairwise_repertoire_comparison.tab.gz](data/PUB_pairwise_repertoire_comparison.tab.gz) 
-	- The table recording pairwise repertoire comparison together with the number of total clones for compared samples (Fig. 5B) 
+	- The table recording pairwise repertoire comparison together with the number of total clones for compared samples (Fig. 4B) 
 * [PUB_public_clone_record_from_mixcr_output.tab.gz](data/PUB_public_clone_record_from_mixcr_output.tab.gz) 
-	- The file containing all lines in the clones.txt file that records public clones (Fig 5C)
+	- The file containing all lines in the clones.txt file that records public clones (Fig. 4C)
 ### Scripts
-#### All-to-all public clone quantification (Fig. 5A)
+#### All-to-all public clone quantification (Fig. 4A)
 
 `python all2all_public_quantification.py clone_file_path.tab`
 
@@ -309,7 +309,7 @@ IGHV3-30-3_IGHJ4_TGTGCGAGAGGAGATTCCCGATACAGCTATGGCCTAGACCTTGACTACTGG	SRR8365263,
 ```
 The two matrixes are different from each other in that one of them neglects clone sharing between samples from the same project while the other does not (see _Method_ in MS above). 
 
-#### All-to-all public clone visualization (Fig. 5A)
+#### All-to-all public clone visualization (Fig. 4A)
 
 `python all2all_public_visualization.py matrix.tab metadata.tab`
 
@@ -317,7 +317,7 @@ The script, `all2all_public_visualization.py`, implements the visualization of a
 
 ![heatmap](figures/all_to_all_comparison_heatmap.png)
 
-#### Linear model visualization (Fig. 5B)
+#### Linear model visualization (Fig. 4B)
 
 `python linear_model_visualization.py pairwise_rep_comp.tab`
 
@@ -338,7 +338,7 @@ CloneNumFilter  Coef    Intercept       R2
 ```
 
 
-#### Quantification and visualization of the correlation between clonality and publicness of public clones (Fig. 5C)
+#### Quantification and visualization of the correlation between clonality and publicness of public clones (Fig. 4C)
 
 `python clonality_publicness_correlation_visualization.py pub_record.tab metadata.tab`
 
