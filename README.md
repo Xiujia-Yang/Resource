@@ -1,7 +1,7 @@
 # Resource
 
 ## Overview
-This repository contains all scripts and preliminary statistics related to the key analyses in each section in the Result of the manuscript (MS) ***"Large-scale analysis of 2,152 Ig-seq datasets reveals key features of B cell biology and the antibody repertoire"***. These analyses can be classified into four categories, including gene usage, somatic recombination, somatic hypermutation and public clones. More details can be found in the following sections.
+This repository contains all scripts and preliminary statistics related to the key analyses in each section in the Result of the manuscript (MS) ***"Large-scale analysis of 2,152 Ig-seq datasets reveals key features of B cell biology and the antibody repertoire"***. These analyses can be classified into four categories, including gene usage, somatic recombination, somatic hypermutation and public clone. More details can be found in the following sections.
 
 - [Gene usage](#Gene-usage)
 - [Somatic recombination](#Somatic-recombination)
@@ -9,7 +9,7 @@ This repository contains all scripts and preliminary statistics related to the k
 - [Public clone](#Public-clone)
 
 ## Gene usage
-###Scripts
+### Scripts
 #### Gene usage overview quantification (Fig. 2A)
 
 `python geneUsageOverview_quantification.py V_input.txt V outDir`
@@ -59,7 +59,7 @@ The script, `obtainCoreGene.py`, implements the core V gene selection and visual
 
 
 ## Somatic recombination
-###Scripts
+### Scripts
 
 `python VDrecombination.py VDUnpro.csv Vgene Dgene Vlocal.txt Dlocal.txt Jlocal.txt CoreVgene.txt VDcombination.png`
 
@@ -188,7 +188,7 @@ The script, `shm_PlotProfileHeatmap.py`, implements the visualization of positio
 
 `python shm_positional_mut_freq_for_each_sample.py sample alignments.txt clones.txt isotype outdir`
 
-The script, `positional_mut_freq_for_each_sample.py`, implements the positional mutation frequency calculation for alleles in each sample. It takes five parameters as input, which include the sample id (`sample`), the path to `alignments.txt` and `clones.txt` output by MiXCR for each sample, the isotype (i. e. "IGHG") included for analysis, and the output directory. It outputs a directory structure as below.
+The script, `positional_mut_freq_for_each_sample.py`, implements the positional mutation frequency calculation for alleles in each sample. It takes five parameters as input, which include the sample id (`sample`), the path to `alignments.txt` and `clones.txt` output by MiXCR for each sample, the isotype (e. g. "IGHG") included for analysis, and the output directory. It outputs a directory structure as below.
 
 ```
 - outdir
@@ -286,7 +286,7 @@ The script, `shm_motif_mut_freq_cal_for_single_sample.py`, implements motif muta
 
 `python shm_motif_mut_freq_merge_for_multiple_samples.py pathfile`
 
-The script, `shm_motif_mut_freq_merge_for_multiple_samples.py`, implements the merge of individual statistical files output by `shm_motif_mut_freq_cal_for_single_sample.py`. It takes only a file that records the paths to all individual file as input and output a merged statistical file named `motif_mut_profile_merged.txt`, which looks like
+The script, `shm_motif_mut_freq_merge_for_multiple_samples.py`, implements the merge of individual statistical files output by `shm_motif_mut_freq_cal_for_single_sample.py`. It takes only a file that records the paths to all individual files as input and output a merged statistical file named `motif_mut_profile_merged.txt`, which looks like
 
 ```
 Motif	Percentage	Mutated_num	Germline_num	A	C	G	T	A_mut	C_mut	G_mut	T_mut
@@ -309,7 +309,7 @@ T	6.54	98286.75	1502607.0	17.56	38.15	44.28	0.0	17261.95	37498.82	43525.98	0.0
 	- The 2152*2152 matrix recording all-to-all repertoire comparisons (Fig. 4A in MS)
 * [PUB_pairwise_repertoire_comparison.tab.gz](data/PUB_pairwise_repertoire_comparison.tab.gz) 
 	- The table recording pairwise repertoire comparison together with the number of total clones for compared samples (Fig. 4B) 
-* [PUB_public_clone_record_from_mixcr_output.tab.gz](data/PUB_public_clone_record_from_mixcr_output.tab.gz) 
+* PUB_public_clone_record_from_mixcr_output.tab.gz
 	- The file containing all lines in the clones.txt file that records public clones (Fig. 4C)
 ### Scripts
 #### All-to-all public clone quantification (Fig. 4A)
