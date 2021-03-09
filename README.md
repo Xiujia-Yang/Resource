@@ -374,7 +374,7 @@ The script, `clonality_publicness_correlation_visualization.py`, implements the 
 ![correlation](figures/Clonality_against_publicness_and_CDR3_length.png)
 
 ## Dependencies
-In-house scripts above were written in Python (v3.7) and MATLAB (v). For python, a series of modules are required, which include pandas, csv. For MATLAB, xxx and xxx are required. 
+In-house scripts above were written in Python (v3.7). Noted that a series of modules are required, which include `pandas`, `numpy`, `csv`, `seaborn`, `matplotlib`, `warnings`, `multiprocessing`, `argparse`, `biopython`, `pyforest`, `subprocess`, `Levenshtein`, `scipy`, `sklearn`, `itertools`, and `mpl_toolkits`.
 
 ## Others
 For the scripts implementing other analyses in the MS, please contact the Lead Contact, Zhenhai Zhang (zhenhaismu@163.com).
