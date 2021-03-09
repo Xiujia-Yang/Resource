@@ -9,6 +9,7 @@ This repository contains all scripts and preliminary statistics related to the k
 - [Public clone](#Public-clone)
 
 ## Gene usage
+###Scripts
 #### Gene usage overview quantification (Fig. 2A)
 
 `python geneUsageOverview_quantification.py V_input.txt V outDir`
@@ -58,6 +59,7 @@ The script, `obtainCoreGene.py`, implements the core V gene selection and visual
 
 
 ## Somatic recombination
+###Scripts
 
 `python VDrecombination.py VDUnpro.csv Vgene Dgene Vlocal.txt Dlocal.txt Jlocal.txt CoreVgene.txt VDcombination.png`
 
