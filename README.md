@@ -309,7 +309,7 @@ T	6.54	98286.75	1502607.0	17.56	38.15	44.28	0.0	17261.95	37498.82	43525.98	0.0
 	- The 2152*2152 matrix recording all-to-all repertoire comparisons (Fig. 4A in MS)
 * [PUB_pairwise_repertoire_comparison.tab.gz](data/PUB_pairwise_repertoire_comparison.tab.gz) 
 	- The table recording pairwise repertoire comparison together with the number of total clones for compared samples (Fig. 4B) 
-* PUB_public_clone_record_from_mixcr_output.tab.gz
+* [PUB_public_clone_record_from_mixcr_output.tab.gz](https://data.mendeley.com/datasets/c3n4j5ff86/1) 
 	- The file containing all lines in the clones.txt file that records public clones (Fig. 4C)
 ### Scripts
 #### All-to-all public clone quantification (Fig. 4A)
